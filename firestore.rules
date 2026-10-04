@@ -1,0 +1,36 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── SETTINGS ─────────────────────────────────────────────────────
+    // Public can read; authenticated admin can update
+    match /settings/{docId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // ── TEAMS ─────────────────────────────────────────────────────────
+    match /teams/{teamId} {
+      // Anyone can submit a registration
+      allow create: if true;
+
+      // Public can read approved teams; authenticated admin can read all
+      allow read: if resource.data.status == 'approved' || request.auth != null;
+
+      // Authenticated admin can update or delete
+      allow update, delete: if request.auth != null;
+    }
+
+    // ── MATCHES ───────────────────────────────────────────────────────
+    match /matches/{matchId} {
+      allow read: if true;
+      allow create, update, delete: if request.auth != null;
+    }
+
+    // ── GALLERY ───────────────────────────────────────────────────────
+    match /gallery/{photoId} {
+      allow read: if true;
+      allow create, update, delete: if request.auth != null;
+    }
+  }
+}

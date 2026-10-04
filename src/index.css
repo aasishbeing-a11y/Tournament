@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-sans bg-white text-dark antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-500 hover:bg-primary-600 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 inline-flex items-center gap-2;
+  }
+  .btn-secondary {
+    @apply border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 inline-flex items-center gap-2;
+  }
+  .btn-danger {
+    @apply bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded-lg transition-all duration-200;
+  }
+  .btn-success {
+    @apply bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-lg transition-all duration-200;
+  }
+  .card {
+    @apply bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden;
+  }
+  .section-title {
+    @apply text-3xl md:text-4xl font-heading font-bold text-dark mb-2;
+  }
+  .section-subtitle {
+    @apply text-gray-500 text-lg mb-8;
+  }
+  .form-input {
+    @apply w-full border border-gray-300 rounded-xl px-4 py-3 text-dark focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent transition-all duration-200 bg-white placeholder-gray-400;
+  }
+  .form-label {
+    @apply block text-sm font-semibold text-dark mb-1.5;
+  }
+  .form-error {
+    @apply text-red-500 text-xs mt-1;
+  }
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+  .badge-pending {
+    @apply badge bg-yellow-100 text-yellow-800;
+  }
+  .badge-approved {
+    @apply badge bg-green-100 text-green-800;
+  }
+  .badge-rejected {
+    @apply badge bg-red-100 text-red-800;
+  }
+  .gradient-orange {
+    @apply bg-gradient-to-r from-primary-500 to-primary-600;
+  }
+  .hero-gradient {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d1a00 50%, #1a1a1a 100%);
+  }
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+}
+
+/* Skeleton loading animation */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #F57C00; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #E65100; }
+
+/* Progress bar animation */
+.progress-step-active {
+  @apply bg-primary-500 text-white;
+}
+.progress-step-done {
+  @apply bg-primary-600 text-white;
+}
+.progress-step-inactive {
+  @apply bg-gray-200 text-gray-500;
+}
+
+/* Table styles */
+.admin-table th {
+  @apply bg-gray-50 text-gray-700 font-semibold text-sm px-4 py-3 text-left border-b border-gray-200;
+}
+.admin-table td {
+  @apply px-4 py-3 text-sm text-gray-700 border-b border-gray-100;
+}
+.admin-table tr:hover td {
+  @apply bg-orange-50;
+}
